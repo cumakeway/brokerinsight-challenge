@@ -1,0 +1,18 @@
+version: "3"
+networks:
+    brokerinsight:
+services:
+    web:
+        container_name: brokerinsight_web
+        networks:
+              - brokerinsight
+        build: .
+        tty: true
+        stdin_open: true
+        volumes:
+            - ./src:/var/www/html
+            - ./config/000-default.conf:/etc/apache2/sites-available/000-default.conf
+
+        ports:
+          - 8180:80
+          - 3356:3306
