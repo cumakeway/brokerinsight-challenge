@@ -14,7 +14,7 @@ class AggregateInsuranceData extends Command
 
     public function handle()
     {
-        // Ingest Datae
+        // Ingest Date
         $broker1Data = $this->readCsv(storage_path('app/public/broker1.csv'));
         $broker2Data = $this->readCsv(storage_path('app/public/broker2.csv'));
 
@@ -60,11 +60,11 @@ class AggregateInsuranceData extends Command
                 'policy_number' => $policy['PolicyNumber'] ?? $policy['PolicyRef'],
                 'insurer' => $policy['Insurer'] ?? $policy['Underwriter'],
                 'insured_amount' => (float) ($policy['InsuredAmount'] ?? $policy['CoverageAmount']),
-                'customer' => $policy['CompanyDescription'] ?? $policy['BusinessDescription'],
-                'customer_category' => $policy['ConsumerCategory'] ?? $policy['ClientType'],
+                'customer' =>  $policy['BusinessDescription'] ?? $policy['CompanyDescription'],
+                'customer_category' => $policy['ClientType'] ?? $policy['ConsumerCategory'] ,
                 'insurance_company_ref' => $policy['InsurerPolicyNumber'] ?? $policy['InsuranceCompanyRef'],
                 'product' => $policy['Product'] ?? $policy['InsurancePlan'],
-                'contract_event' => $policy['ContractEvent'] ?? $policy['BusinessEvent'],
+                'contract_event' => $policy['BusinessEvent'] ?? $policy['ContractEvent'] ,
                 'premium' => $policy['Premium'] ?? $policy['CoverageCost'],
                 'commission' => $policy['Commission'] ?? $policy['BrokerFee'],
                 'start_date' => $startDate,
@@ -75,7 +75,7 @@ class AggregateInsuranceData extends Command
         }, $data);
     }
 
-    private function validateDate($date, $format = 'd/m/Y')
+    public function validateDate($date, $format = 'd/m/Y')
     {
         if (!$date) {
             return null;

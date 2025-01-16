@@ -36,7 +36,7 @@ class GenerateInsuranceReport extends Command
         $activePolicies = array_filter($policies, function ($policy) use ($now) {
             return $policy['start_date'] <= $now && $policy['renewal_date'] >= $now;
         });
-
+       
         $totalPolicies = count($policies);
         $totalActivePolicies = count($activePolicies);
         $totalCustomersWithActivePolicies = count(array_unique(array_column($activePolicies, 'customer')));
