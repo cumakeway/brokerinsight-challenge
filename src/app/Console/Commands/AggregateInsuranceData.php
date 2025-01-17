@@ -14,7 +14,7 @@ class AggregateInsuranceData extends Command
 
     public function handle()
     {
-        // Ingest Date
+        // Ingest Data
         $broker1Data = $this->readCsv(storage_path('app/public/broker1.csv'));
         $broker2Data = $this->readCsv(storage_path('app/public/broker2.csv'));
 
