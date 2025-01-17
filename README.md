@@ -6,7 +6,7 @@ You need to have Docker desktop already installed on your machine
 
 1. Clone repository and checkout master branch
 2. From vscode or your chosen IDE open the terminal and run `docker-compose up -d` to spin up the docker container
-3. run `composer install`
+3. cd into `src` folder and run `composer install`
 4. Open docker container terminal, type `bash`
 5. Add csv files `broker1.csv` and `broker2.csv` to `storage/app/public` folder since this folder is ignored by git.
 
