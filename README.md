@@ -49,6 +49,6 @@ You can run all the tests using `php artisan test` or individual tests by runnin
 **Side notes**
 
 Please note that the `AggregateInsuranceData` must always be ran before calling the `GenerateInsuranceReport` otherwise an error would 
-occur since there would be aggregated policies to report on.
+occur since there would be no aggregated policies to report on.
 
 
