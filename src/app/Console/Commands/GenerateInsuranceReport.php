@@ -13,7 +13,7 @@ class GenerateInsuranceReport extends Command
 
     public function handle()
     {
-        $filePath = storage_path('app/aggregated_policies.json');
+        //$filePath = storage_path('app/aggregated_policies.json');
 
         if (!Storage::exists('aggregated_policies.json')) {
             $this->error('No aggregated data found. Run the aggregation command first.');
@@ -27,11 +27,6 @@ class GenerateInsuranceReport extends Command
     public function generateReport($policies)
     {
         $now = Carbon::now();
-
-        //calculate and display the total count of policies
-        //total count of customers
-        //the sum of insured amounts
-        //the average policy duration across (in days) across the two brokers for active policies
 
         $activePolicies = array_filter($policies, function ($policy) use ($now) {
             return $policy['start_date'] <= $now && $policy['renewal_date'] >= $now;
